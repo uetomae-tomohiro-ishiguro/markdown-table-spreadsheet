@@ -1,0 +1,11 @@
+version: '3'
+services:
+  markdown-table-spreadsheet_app:
+    container_name: markdown-table-spreadsheet_app
+    build:
+      context: app
+    tty: true
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./app/src:/work
