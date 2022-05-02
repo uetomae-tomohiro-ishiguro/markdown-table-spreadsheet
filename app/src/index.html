@@ -8,7 +8,7 @@
     <button onclick="setValue(document.getElementById('md'))">Run</button>
     <script>
       function setValue(elment) {
-        var value = elment.value;
+        const value = elment.value;
         google.script.run.withUserObject(this).md2ss(value);
       }
     </script>

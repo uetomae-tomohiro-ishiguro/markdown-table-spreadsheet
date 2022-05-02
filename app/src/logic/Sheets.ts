@@ -1,30 +1,16 @@
-var COLUMN_HEADER_ROW = 1;
-var DATA_START_ROW = COLUMN_HEADER_ROW + 1;
+const COLUMN_HEADER_ROW = 1;
+const DATA_START_ROW = COLUMN_HEADER_ROW + 1;
 
 // スプレッドシートの表を読み込む
 // ----------------------------------------
 function readSheet() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const spreadSheet = ss.getActiveSheet();
-  // 表の最終列、最終行を取得する
-  var tableLastColumn = spreadSheet
-    .getRange(COLUMN_HEADER_ROW, 1)
-    .getNextDataCell(SpreadsheetApp.Direction.NEXT)
-    .getColumn();
-  var lastRow =
-    spreadSheet
-      .getRange(COLUMN_HEADER_ROW, 1)
-      .getNextDataCell(SpreadsheetApp.Direction.DOWN)
-      .getRow() - 1;
-  // 表ヘッダのリストを取得する
-  var columnHeaders = spreadSheet
-    .getRange(COLUMN_HEADER_ROW, 1, COLUMN_HEADER_ROW, tableLastColumn)
-    .getValues();
-  // データを取得する
-  var rowIndex = DATA_START_ROW - 1;
-  var values = spreadSheet
-    .getRange(DATA_START_ROW, 1, lastRow, tableLastColumn)
-    .getValues();
+  // シート上の値を全て取得する
+  const table = spreadSheet.getDataRange().getValues();
+  const columnHeaders = [table[0]];
+  table.splice(0, 1);
+  const values = table;
   return { columnHeaders: columnHeaders, values: values };
 }
 
