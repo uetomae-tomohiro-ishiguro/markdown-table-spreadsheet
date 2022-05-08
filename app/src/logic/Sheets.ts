@@ -6,6 +6,9 @@ const DATA_START_ROW = COLUMN_HEADER_ROW + 1;
 function readSheet() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const spreadSheet = ss.getActiveSheet();
+  if (spreadSheet.getRange(1, 1).getValue().trim().length == 0) {
+    return null;
+  }
   // シート上の値を全て取得する
   const table = spreadSheet.getDataRange().getValues();
   const columnHeaders = [table[0]];
@@ -33,4 +36,12 @@ function writeSheet(table) {
     }
     row++;
   }
+}
+
+// スプレッドシートの値をクリアする
+// ----------------------------------------
+function clearSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const spreadSheet = ss.getActiveSheet();
+  spreadSheet.clear();
 }

@@ -1,7 +1,23 @@
 {
   "timeZone": "Asia/Tokyo",
-  "dependencies": {
-  },
+  "dependencies": {},
   "exceptionLogging": "STACKDRIVER",
-  "runtimeVersion": "V8"
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets.currentonly",
+    "https://www.googleapis.com/auth/script.container.ui"
+  ],
+  "addOns": {
+    "common": {
+      "name": "MD Table Converter",
+      "logoUrl": "https://redmine.uetomae.co.jp/themes/circle/images/logo.png",
+      "layoutProperties": {
+        "primaryColor": "#00a0e7"
+      },
+      "homepageTrigger": {
+        "runFunction": "onHomepage"
+      }
+    },
+    "sheets": {}
+  }
 }
